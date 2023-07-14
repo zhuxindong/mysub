@@ -90,13 +90,14 @@
 
         // 处理保存按钮点击事件
         document.getElementById('saveButton').addEventListener('click', async() => {
-            const textContent = encodeURIComponent(document.getElementById('editor').value);
+            const textContent = document.getElementById('editor').value;
+            const base64Content = btoa(textContent);
             var requestOptions = {
                 method: 'GET',
                 redirect: 'follow',
                 credentials: 'include'
             };
-            fetch("./api/save/" + textContent, requestOptions)
+            fetch("./api/save/" + base64Content, requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     console.log("saveresult: " + result);
