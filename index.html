@@ -22,9 +22,10 @@
 <body>
     <h1>文本编辑器</h1>
 
-    <textarea id="editor" placeholder="在此处输入您的文字内容"></textarea>
+    <textarea id="editor" placeholder="在此处输入您的文字内容" readonly></textarea>
 
-    <button id="saveButton">保存</button>
+    <button id="editButton">编辑</button>
+    <button id="saveButton" disabled>保存</button>
 
 
     <script>
@@ -33,7 +34,6 @@
             var requestOptions = {
                 method: 'GET',
                 redirect: 'follow',
-                //include authorization credientials
                 credentials: 'include'
             };
             fetch("./api/getlist", requestOptions)
@@ -43,10 +43,17 @@
                     document.getElementById('editor').value = result || '';
                 })
                 .catch(error => {
-                    alert("An error occurred while synchronizing data with the server, please check the network connection");
+                    alert("与服务器同步数据时发生错误，请检查网络连接");
                     console.log('error', error)
                 });
 
+        });
+
+        // 处理编辑按钮点击事件
+        document.getElementById('editButton').addEventListener('click', () => {
+            document.getElementById('editor').readOnly = false;
+            document.getElementById('editButton').disabled = true;
+            document.getElementById('saveButton').disabled = false;
         });
 
         // 处理保存按钮点击事件
@@ -55,17 +62,19 @@
             var requestOptions = {
                 method: 'GET',
                 redirect: 'follow',
-                //include authorization credientials
                 credentials: 'include'
             };
             fetch("./api/save/" + textContent, requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     console.log("saveresult: " + result);
-                    alert("save success !")
+                    alert("保存成功！");
+                    document.getElementById('editor').readOnly = true;
+                    document.getElementById('editButton').disabled = false;
+                    document.getElementById('saveButton').disabled = true;
                 })
                 .catch(error => {
-                    alert("An error occurred while synchronizing data with the server, please check the network connection");
+                    alert("与服务器同步数据时发生错误，请检查网络连接");
                     console.log('error', error)
                 });
         });
