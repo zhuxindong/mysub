@@ -11,7 +11,7 @@ export async function onRequest(context) {
     console.log(env)
     const value = await env.mysub.get("sub");
 
-    console.log(value)
+    console.log("subvalue: " + value)
         //let res=[]
         //for (let i in value.keys){
         //add to res

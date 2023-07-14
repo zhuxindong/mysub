@@ -9,8 +9,8 @@ export async function onRequest(context) {
         data, // arbitrary space for passing data between middlewares
     } = context;
     console.log(env)
-    console.log(params.sub)
-    await env.mysub.put("sub", params.sub);
+    console.log(params.subs)
+    await env.mysub.put("sub", params.subs);
     // const info = JSON.stringify(params.sub);
     return new Response("save success");
 
