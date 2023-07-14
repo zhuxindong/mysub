@@ -88,7 +88,7 @@
 
         // 处理保存按钮点击事件
         document.getElementById('saveButton').addEventListener('click', async() => {
-            const textContent = document.getElementById('editor').value;
+            const textContent = encodeURIComponent(document.getElementById('editor').value);
             var requestOptions = {
                 method: 'GET',
                 redirect: 'follow',
