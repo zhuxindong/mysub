@@ -25,6 +25,12 @@ export async function onRequest(context) {
         //res.push(tmp)
         //}
         // const info = JSON.stringify(value.keys);
-    return new Response(decodeURIComponent(value));
+        // Create a new Response object with the decoded value
+    const response = new Response(decodeURIComponent(value));
+
+    // Add the Content-Type header to the response
+    response.headers.append('Content-Type', 'text/html');
+
+    return response;
 
 }
