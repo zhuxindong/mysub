@@ -8,7 +8,7 @@ export async function onRequest(context) {
         next, // used for middleware or to fetch assets
         data, // arbitrary space for passing data between middlewares
     } = context;
-    console.log(env)
+    // console.log(env)
     const value = await env.mysub.get("sub");
 
     console.log("subvalue: " + value)

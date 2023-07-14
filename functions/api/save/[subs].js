@@ -8,8 +8,8 @@ export async function onRequest(context) {
         next, // used for middleware or to fetch assets
         data, // arbitrary space for passing data between middlewares
     } = context;
-    console.log(env)
-    console.log(params.subs)
+    // console.log(env)
+    console.log("subjs get param:" + params.subs)
     await env.mysub.put("sub", params.subs);
     // const info = JSON.stringify(params.sub);
     return new Response("save success");

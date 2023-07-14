@@ -38,10 +38,10 @@
             };
             fetch("./api/getlist", requestOptions)
                 .then(response => {
-                    console.log(response.text());
+                    console.log("loadresp: " + response.text());
                 })
                 .then(result => {
-                    console.log(result);
+                    console.log("loadresult: " + result);
                     document.getElementById('editor').value = result || '';
                 })
                 .catch(error => {
@@ -62,10 +62,11 @@
             };
             fetch("./api/save/" + textContent, requestOptions)
                 .then(response => {
-                    console.log(response.text());
+                    console.log("saveresp: " + response.text());
                 })
                 .then(result => {
-                    console.log(result);
+                    console.log("saveresult: " + result);
+                    alert("save success !")
                 })
                 .catch(error => {
                     alert("An error occurred while synchronizing data with the server, please check the network connection");
