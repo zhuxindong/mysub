@@ -8,24 +8,54 @@
             font-family: Arial, sans-serif;
         }
         
-        textarea {
-            width: 400px;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        #editor {
+            width: 100%;
             height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            font-size: 16px;
         }
         
         button {
-            margin-top: 10px;
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
 
 <body>
-    <h1>文本编辑器</h1>
+    <div class="container">
+        <h1>文本编辑器</h1>
 
-    <textarea id="editor" placeholder="在此处输入您的文字内容" readonly></textarea>
+        <textarea id="editor" placeholder="在此处输入您的文字内容" readonly></textarea>
 
-    <button id="editButton">编辑</button>
-    <button id="saveButton" disabled>保存</button>
+        <button id="editButton">编辑</button>
+        <button id="saveButton" disabled>保存</button>
+    </div>
 
 
     <script>
