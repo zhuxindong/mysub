@@ -30,6 +30,12 @@
     <script>
         // 获取已保存的文本内容，并在页面加载时显示
         window.addEventListener('load', async() => {
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow',
+                //include authorization credientials
+                credentials: 'include'
+            };
             fetch("./api/getlist", requestOptions)
                 .then(response => response.text())
                 .then(result => {
@@ -45,6 +51,12 @@
         // 处理保存按钮点击事件
         document.getElementById('saveButton').addEventListener('click', async() => {
             const textContent = document.getElementById('editor').value;
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow',
+                //include authorization credientials
+                credentials: 'include'
+            };
             fetch("./api/save/" + textContent, requestOptions)
                 .then(response => response.text())
                 .then(result => {
