@@ -12,6 +12,6 @@ export async function onRequest(context) {
     console.log(params.sub)
     await env.mysub.put("sub", params.sub);
     // const info = JSON.stringify(params.sub);
-    return new Response();
+    return new Response("save success");
 
 }
