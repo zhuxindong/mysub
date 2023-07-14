@@ -25,6 +25,6 @@ export async function onRequest(context) {
         //res.push(tmp)
         //}
         // const info = JSON.stringify(value.keys);
-    return new Response(value);
+    return new Response(decodeURIComponent(value));
 
 }
